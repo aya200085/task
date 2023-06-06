@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DataTables\CityDataTable;
-use App\DataTables\CountryDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\City;
 use Illuminate\Http\Request;
@@ -15,7 +14,7 @@ class CityController extends Controller
      */
     public function index(CityDataTable $city)
     {
-        return $city->render('admin.city.index',['title'=>'City Control']);
+        return $city->render('admin.city.index', ['title' => 'City Control']);
     }
 
     /**
@@ -47,8 +46,8 @@ class CityController extends Controller
      */
     public function edit(string $id)
     {
-        $city=City::findOrFail($id);
-        return view ('admin.city.edit',compact('city'));
+        $city = City::findOrFail($id);
+        return view('admin.city.edit', compact('city'));
     }
 
     /**
@@ -57,14 +56,38 @@ class CityController extends Controller
     public function update(Request $request, string $id)
     {
 
+        $city = City::findOrFail($id)->update([
+            'name' => $request->name,
+        ]);
+        return redirect('cities');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, $id)
     {
-        //
+        City::destroy($request->id);
+        return redirect('cities');
+
     }
+
+
+public function changeStatus(string $id)
+    {
+
+        $city = City::findOrFail($id);
+        $city->update([
+            'status' => 1,
+        ]);
+
+        return redirect('cities');
+
+    }
+
+
+
+
 
 }

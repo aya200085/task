@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(WordSeeder::class);
-       $this->call(ChangeStatusWordSeeder::class);
+    //     $this->call(WordSeeder::class);
+    //    $this->call(ChangeStatusWordSeeder::class);
 
         User::create([
             'name'=>'admin',

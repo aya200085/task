@@ -1,5 +1,5 @@
 <a href="{{route('cities.edit',$id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-{{--<a href="{{ URL('/change-country-status/'.$id )}}" class="btn btn-success btn-sm">status</a>--}}
+<a href="{{ URL('/change-city-status/'.$id )}}" class="btn btn-success btn-sm">status</a>
 
 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete{{$id}}">
     <i class="fa fa-trash"></i>

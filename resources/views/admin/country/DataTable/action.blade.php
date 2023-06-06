@@ -1,15 +1,6 @@
 <a href="{{route('countrys.edit',$id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
 <!-- Button trigger modal -->
 
-{{--    <button type="button" class="btn btn-sucsess btn-sm">--}}
-{{--        <form action="{{ URL('/change-country-status/'.$id )}}" method="GET">--}}
-
-{{--        @csrf--}}
-
-{{--        @method('PUT')--}}
-{{--        </form>--}}
-
-{{--    </button>--}}
 
 
 <a href="{{ URL('/change-country-status/'.$id )}}" class="btn btn-success btn-sm">status</a>
