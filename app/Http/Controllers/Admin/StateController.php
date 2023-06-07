@@ -73,18 +73,18 @@ class StateController extends Controller
     }
 
 
-    public function changeStatus(string $id)
+    public function changeStatus(string $id,Request $request)
     {
 
         $state = State::findOrFail($id);
         $state->update([
-            'status' => 1,
+            'status' => $request->input('status'),
         ]);
 
         $cities = City::where('state_id', $state->id)->get(['id','status']);
         foreach ($cities as $key => $value) {
             $value->update([
-                'status' => 1,
+                'status' => $request->input('status'),
             ]);
 
         }

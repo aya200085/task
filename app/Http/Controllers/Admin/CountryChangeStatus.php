@@ -9,18 +9,18 @@ use App\Models\Country;
 use App\Models\State;
 class CountryChangeStatus extends Controller
 {
-    public function changeStatus(string $id)
+    public function changeStatus(string $id, Request $request )
     {
 
         $country = Country::findOrFail($id);
         $country->update([
-            'status' => 1,
+            'status' => $request->input('status'),
         ]);
 
         $states = State::where('country_id', $country->id)->get(['id','status']);
         foreach ($states as $key => $value) {
             $value->update([
-                'status' => 1,
+                'status' => $request->input('status'),
             ]);
         }
 
@@ -28,7 +28,7 @@ class CountryChangeStatus extends Controller
             $cities = City::where('state_id', $value->id)->get(['id','status']);
             foreach ($cities as $key => $city) {
                 $city->update([
-                    'status' => 1,
+                    'status' => $request->input('status'),
                 ]);
             }
         }

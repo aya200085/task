@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('countrys',countryController::class);
     Route::resource('states',StateController::class);
     Route::resource('cities',CityController::class);
-    Route::get('/change-country-status/{id}', [CountryChangeStatus::class, 'changeStatus']);
+    Route::get('/change-country-status/{id}', [CountryChangeStatus::class, 'changeStatus'])->name('change-country-status');
     Route::get('/change-state-status/{id}', [StateController::class, 'changeStatus']);
     Route::get('/change-city-status/{id}', [CityController::class, 'changeStatus']);
 

@@ -74,12 +74,12 @@ class CityController extends Controller
     }
 
 
-public function changeStatus(string $id)
+public function changeStatus(string $id,Request $request)
     {
 
         $city = City::findOrFail($id);
         $city->update([
-            'status' => 1,
+            'status' => $request->input('status'),
         ]);
 
         return redirect('cities');
