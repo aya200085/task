@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ClientController;
+use App\Http\Controllers\Api\DriverController;
 use App\Http\Controllers\Api\SettingController;
 
 /*
@@ -33,6 +34,26 @@ Route::group([
     Route::post('/refresh', [ClientController::class, 'refresh']);
 
 });
+
+
+Route::group([
+    'middleware' => 'AssignGuard:api-driver',
+    'prefix'=>'driver'
+], function ($router) {
+    Route::post('/login', [DriverController::class, 'login']);
+    Route::post('/register', [DriverController::class, 'register']);
+    Route::post('/logout', [DriverController::class, 'logout']);
+    Route::post('/refresh', [DriverController::class, 'refresh']);
+
+});
+
+
+
+
+
+
+
+
 
  Route::group(['middleware'=>['api','JwtMIddleware']],function(){
 Route::get('countries',[SettingController::class,'allCountries']);
